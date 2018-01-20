@@ -100,7 +100,11 @@
     "Relax. You're on Ghost."]
    [:p.faded
     "Ghost was made by Christopher Shea, who you can email I guess: "
-    [:a.faded {:href "mailto:cmshea@gmail.com"} "cmshea@gmail.com"]]])
+    [:a.faded {:href "mailto:cmshea@gmail.com"} "cmshea@gmail.com"]]
+   [:p.faded
+    "Ghost is open source: "
+    [:a.faded {:href "https://github.com/tie-rack/ghost"}
+     "github.com/tie-rack/ghost"]]])
 
 (defn logged-out []
   [:div
