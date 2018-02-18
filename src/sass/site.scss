@@ -89,3 +89,9 @@ body {
 .smaller {
   font-size: 80%;
 }
+
+@media all and (display-mode: fullscreen) {
+  body {
+    margin-top: 40px;
+  }
+}

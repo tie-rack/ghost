@@ -7,7 +7,7 @@ const composer = require('gulp-uglify/composer');
 const minify = composer(uglifyes, console);
 
 const scssSources = './src/sass/**/*.scss';
-const htmlSources = './src/html/**/*.html';
+const assetSources = './src/assets/**/*';
 const jsSources = './src/js/**/*.js';
 
 gulp.task('sass', () => {
@@ -20,8 +20,8 @@ gulp.task('sass:watch', () => {
   return gulp.watch(scssSources, ['sass']);
 });
 
-gulp.task('html', () => {
-  return gulp.src(htmlSources)
+gulp.task('assets', () => {
+  return gulp.src(assetSources)
     .pipe(gulp.dest('./out'));
 });
 
@@ -34,8 +34,8 @@ gulp.task('js', () => {
 
 gulp.task('watch', () => {
   gulp.watch(scssSources, ['sass']);
-  gulp.watch(htmlSources, ['html']);
+  gulp.watch(assetSources, ['assets']);
   gulp.watch(jsSources, ['js']);
 });
 
-gulp.task('build', ['sass', 'html', 'js']);
+gulp.task('build', ['sass', 'assets', 'js']);

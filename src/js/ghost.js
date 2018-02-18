@@ -2,6 +2,16 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').then((r) => {
+      console.log('ServiceWorker registration successful with scope: ', r.scope);
+    }, (err) => {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+
 const ghost = (() => {
   let username, media;
 
