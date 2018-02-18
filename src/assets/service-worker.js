@@ -1,5 +1,5 @@
 const CACHE = 'ghost-cache';
-const ASSETS = ['/index.html', '/js/ghost.js', '/css/site.css'];
+const ASSETS = ['/', '/index.html', '/js/ghost.js', '/css/site.css'];
 
 const precache = () =>
   caches.open(CACHE).then((cache) =>
