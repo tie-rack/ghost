@@ -1,6 +1,2 @@
-/*.log
-/target
-/*-init.clj
-/resources/public/css/compiled
-/resources/public/js/compiled
-out
+/node_modules/
+/out/

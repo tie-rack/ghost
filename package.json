@@ -1,0 +1,19 @@
+{
+  "name": "ghostpost.online",
+  "version": "0.1.0",
+  "description": "Ghost: the social network that's neither",
+  "homepage": "https://ghostpost.online/",
+  "license": "MPL-2.0",
+  "author": {
+    "name": "Christopher Shea",
+    "email": "cmshea@gmail.com"
+  },
+  "devDependencies": {
+    "gulp-cli": "2.0.1",
+    "gulp": "3.9.1",
+    "gulp-sass": "3.1.0",
+    "gulp-uglify": "3.0.0",
+    "uglify-es": "3.3.9"
+  },
+  "private": true
+}
