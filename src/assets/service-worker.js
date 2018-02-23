@@ -1,27 +1,39 @@
 const CACHE = 'ghost-cache';
-const ASSETS = ['/', '/index.html', '/js/ghost.js', '/css/site.css'];
+const ASSETS = ['/',
+                '/index.html',
+                '/js/ghost.js',
+                '/css/site.css',
+                '/manifest.webmanifest'];
 
-const precache = () =>
-  caches.open(CACHE).then((cache) =>
-    cache.addAll(ASSETS));
-
-const fromCache = (request) =>
-  caches.open(CACHE).then((cache) =>
-    cache.match(request).then((matching) =>
-      matching || Promise.reject('no-match')));
-
-const update = (request) =>
-  caches.open(CACHE).then((cache) =>
-    fetch(request).then((response) =>
-      cache.put(request, response)));
-
-self.addEventListener('install', (e) => {
-  console.log('Installing ghost');
-  e.waitUntil(precache());
+self.addEventListener('install', function(evt) {
+  console.log('Installing Ghost...');
+  evt.waitUntil(precache());
 });
 
-self.addEventListener('fetch', (e) => {
-  console.log('Serving from cache');
-  e.respondWith(fromCache(e.request));
-  e.waitUntil(update(e.request));
+self.addEventListener('fetch', function(evt) {
+  console.log('Serving from Ghost cache.');
+  evt.respondWith(fromCache(evt.request));
+  evt.waitUntil(update(evt.request));
 });
+
+function precache() {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.addAll(ASSETS);
+  });
+}
+
+function fromCache(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.match(request).then(function (matching) {
+      return matching || Promise.reject('no-match');
+    });
+  });
+}
+
+function update(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response);
+    });
+  });
+}
